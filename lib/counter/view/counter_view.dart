@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_art_gallery/counter/bloc/counter_bloc.dart';
-import 'package:flutter_art_gallery/counter/bloc/counter_event.dart';
+
+import 'counter_text.dart';
+import 'increment_button.dart';
 
 class CounterView extends StatelessWidget {
   const CounterView({super.key});
@@ -12,30 +12,8 @@ class CounterView extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Counter app"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            BlocBuilder<CounterBloc, int>(
-              builder: (context, state) {
-                return Text(
-                  '$state',
-                  style: Theme.of(context).textTheme.headline4,
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            context.read<CounterBloc>().add(CounterIncrementPressed()),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: const CounterText(),
+      floatingActionButton: const IncrementButton(),
     );
   }
 }
